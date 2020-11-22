@@ -1,7 +1,14 @@
 @import "../variables.scss";
 
 .root {
-  background: $colors-primary-1;
+  background: $colors-primary-5;
   width: 100vw;
   max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.docWidth {
+  max-width: $app-width;
+  width: 100%;
 }

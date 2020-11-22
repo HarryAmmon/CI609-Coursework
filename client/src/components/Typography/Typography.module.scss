@@ -1,0 +1,42 @@
+@import "../variables.scss";
+
+.h1 {
+  font-family: $sans-serif;
+  font-size: $font-size-1;
+  font-weight: $font-weight-2;
+}
+
+.h2 {
+  font-family: $sans-serif;
+  font-size: $font-size-2;
+  font-weight: $font-weight-2;
+  margin: 0;
+}
+
+.h3 {
+  font-family: $sans-serif;
+  font-size: $font-size-3;
+  font-weight: $font-weight-2;
+}
+
+.h4 {
+  font-family: $sans-serif;
+  font-size: $font-size-4;
+  font-weight: $font-weight-3;
+}
+
+.h5 {
+  font-family: $sans-serif;
+  font-size: $font-size-5;
+  font-weight: $font-weight-2;
+}
+
+.p {
+  font-family: $sans-serif;
+  font-size: $font-size-5;
+  font-weight: $font-weight-5;
+}
+
+.bold {
+  font-family: $sans-serif;
+}
