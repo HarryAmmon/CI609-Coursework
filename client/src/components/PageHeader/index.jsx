@@ -1,5 +1,5 @@
 import React from "react";
-import Styles from "./PageHeader.module.css";
+import Styles from "./PageHeader.module.scss";
 
 const PageHeader = () => (
   <header className={Styles.root}>

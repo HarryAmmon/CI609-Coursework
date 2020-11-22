@@ -1,5 +1,5 @@
 import React from "react";
-import Styles from "./PageFooter.module.css";
+import Styles from "./PageFooter.module.scss";
 
 const PageFooter = () => (
   <footer className={Styles.root}>
