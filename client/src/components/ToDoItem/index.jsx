@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Styles from "./ToDoItem.module.css";
+import Styles from "./ToDoItem.module.scss";
 import Checkbox from "../Checkbox";
 
 const ToDoItem = ({ title, id }) => {

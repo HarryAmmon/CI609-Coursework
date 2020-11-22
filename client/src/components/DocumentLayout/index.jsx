@@ -1,5 +1,5 @@
 import React from "react";
-import Styles from "./DocumentLayout.module.css";
+import Styles from "./DocumentLayout.module.scss";
 
 const DocumentLayout = ({ children }) => (
   <div className={Styles.root}>{children}</div>
