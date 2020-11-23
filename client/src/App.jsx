@@ -3,7 +3,7 @@ import PageHeader from "./components/PageHeader";
 import PageLayout from "./components/PageLayout";
 import DocumentLayout from "./components/DocumentLayout";
 import ToDoItem from "./components/ToDoItem";
-import { H1, H2, H3, H4, H5, Hr, P, B } from "./components/Typography";
+import { P } from "./components/Typography";
 import ListTitle from "./components/ListTitle";
 import SideBar from "./components/SideBar";
 import "./App.css";
