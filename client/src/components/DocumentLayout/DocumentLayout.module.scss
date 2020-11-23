@@ -1,7 +1,6 @@
 @import "../variables.scss";
 .root {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   max-width: $app-width;
-  border: 2px solid green;
 }

@@ -1,6 +1,6 @@
 // Screen Size
 $app-width: 1250px;
-$sideNav-width: 300px;
+$sideNav-width: 280px;
 
 // Colors
 $colors-white: #ffffff;
@@ -19,11 +19,11 @@ $colors-neutral-4: #dadada;
 $colors-neutral-5: #777777;
 
 // Font Sizes
-$font-size-1: 32rem;
-$font-size-2: 24rem;
-$font-size-3: 16rem;
-$font-size-4: 10rem;
-$font-size-5: 5rem;
+$font-size-1: 3rem;
+$font-size-2: 2.5rem;
+$font-size-3: 2rem;
+$font-size-4: 1.5rem;
+$font-size-5: 1rem;
 
 // Font Weight
 $font-weight-1: 900; // MAX
@@ -31,3 +31,7 @@ $font-weight-2: 700; // BOLD
 $font-weight-3: 400; // NORMAl
 $font-weight-4: 300;
 $font-weight-5: 100;
+
+// Font family
+$sans-serif: Helvetica, sans-serif, Arial;
+$monospace: monospace;

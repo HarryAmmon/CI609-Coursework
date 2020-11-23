@@ -3,6 +3,10 @@ import PageHeader from "./components/PageHeader";
 import PageLayout from "./components/PageLayout";
 import DocumentLayout from "./components/DocumentLayout";
 import ToDoItem from "./components/ToDoItem";
+import { H1, H2, H3, H4, H5, Hr, P, B } from "./components/Typography";
+import ListTitle from "./components/ListTitle";
+import SideBar from "./components/SideBar";
+import "./App.css";
 
 function App() {
   const ToDoList = [
@@ -13,15 +17,26 @@ function App() {
   ];
   return (
     <PageLayout>
-      <PageHeader />
+      <PageHeader appTitle={"ToDo"} />
       <DocumentLayout>
-        <h1>
-          test title this should be really long but not be longer than the
-          1250px that I defined for this component to be lol
-        </h1>
-        {ToDoList.map((item, index) => (
-          <ToDoItem title={item.title} key={index} id={index} />
-        ))}
+        <SideBar />
+        <div>
+          <ListTitle name={"Test List"} />
+          {ToDoList.map((item, index) => (
+            <ToDoItem title={item.title} key={index} id={index} />
+          ))}
+          <P>
+            Lucas ipsum dolor sit amet fisto lobot mandalore calamari organa
+            wicket greedo moff organa skywalker. Palpatine moff yavin ackbar
+            solo mara. Hutt darth darth darth yoda kessel. Skywalker amidala
+            hutt moff moff. Skywalker fett tatooine skywalker yoda. Moff
+            chewbacca qui-gon fett darth wookiee utapau secura. Skywalker hoth
+            gamorrean mace grievous tatooine luke. Wedge jabba gamorrean thrawn.
+            Skywalker ventress solo antilles mon wedge bespin moff. Aayla darth
+            moff bespin. Jango antilles darth owen mara skywalker kamino leia
+            kashyyyk
+          </P>
+        </div>
       </DocumentLayout>
       <PageFooter />
     </PageLayout>

@@ -1,0 +1,8 @@
+@import "../variables.scss";
+
+.root {
+  max-width: $sideNav-width;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
