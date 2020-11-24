@@ -10,9 +10,9 @@ import "./App.css";
 
 function App() {
   const ToDoList = [
-    { title: "Item 1" },
-    { title: "Item 2" },
+    { title: "Item 1", note: "These are some notes about this item" },
     { title: "Item 3" },
+    { title: "Item 2", note: "These are some notes" },
     { title: "Item 4" },
   ];
   return (
@@ -23,7 +23,12 @@ function App() {
         <div>
           <ListTitle name={"Test List"} />
           {ToDoList.map((item, index) => (
-            <ToDoItem title={item.title} key={index} id={index} />
+            <ToDoItem
+              title={item.title}
+              key={index}
+              id={index}
+              note={item.note}
+            />
           ))}
           <P>
             Lucas ipsum dolor sit amet fisto lobot mandalore calamari organa
