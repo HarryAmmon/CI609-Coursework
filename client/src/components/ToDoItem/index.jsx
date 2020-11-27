@@ -8,9 +8,16 @@ const ToDoItem = ({ id, title, note }) => {
   const [completed, setCompleted] = useState(false);
   return (
     <div className={Styles.root}>
-      <Checkbox id={id} />
-      <ItemTitle title={title} />
-      <Note note={note} />
+      <Checkbox
+        id={id}
+        name={title}
+        value={completed}
+        onChange={() => setCompleted((completed) => !completed)}
+      />
+      <div className={Styles.titleWrapper}>
+        <ItemTitle title={title} />
+        {note ? <Note note={note} /> : <></>}
+      </div>
     </div>
   );
 };

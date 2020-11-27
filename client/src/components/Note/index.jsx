@@ -1,6 +1,6 @@
 import React from "react";
-import { P } from "../Typography";
+import Styles from "./Note.module.scss";
 
-const Note = ({ note }) => <P>{note}</P>;
+const Note = ({ note }) => <p className={Styles.root}>{note}</p>;
 
 export default Note;

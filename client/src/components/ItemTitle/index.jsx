@@ -1,6 +1,6 @@
 import React from "react";
-import { H4 } from "../Typography";
+import { H5 } from "../Typography";
 
-const ItemTitle = ({ title }) => <H4>{title}</H4>;
+const ItemTitle = ({ title }) => <H5>{title}</H5>;
 
 export default ItemTitle;
