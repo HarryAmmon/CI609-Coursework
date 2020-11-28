@@ -1,4 +1,20 @@
+@import "../variables.scss";
+
 .root {
-  border-bottom: 2px solid grey;
+  background-color: $colors-neutral-4;
+  border-radius: 5px;
   display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem;
+  color: rebeccapurple;
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 0.5rem;
+  color: $colors-black;
 }

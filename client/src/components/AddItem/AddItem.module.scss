@@ -5,11 +5,11 @@
   text-decoration: none;
   text-align: center;
   background-color: $colors-white;
-  border-color: red red red red;
   border-width: 5px;
   line-height: 1;
   height: 3rem;
   outline: none;
+  border: none;
 }
 
 .root:hover {
