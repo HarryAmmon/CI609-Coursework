@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ToDoItem from "../ToDoItem";
+import ToDoAPI from "../../services/ToDOAPI";
 
 const ToDoForm = (props) => {
   const ToDoList = [
@@ -19,10 +20,30 @@ const ToDoForm = (props) => {
     console.log(event.target[0].checked);
   };
 
+  const api = new ToDoAPI("http://localhost:5000/");
+  const [toDos, setToDos] = useState([]);
+
+  useEffect(() => {
+    console.log("In use effect");
+    api.GetAllToDo().then((response) => {
+      console.log(response);
+      setToDos(response);
+    });
+
+    // console.log(result);
+    // setToDos(result);
+  }, []);
+
   return (
     <form onSubmit={handleSubmit}>
-      {ToDoList.map((item, index) => (
-        <ToDoItem title={item.title} key={index} id={index} note={item.note} />
+      {toDos.map((item, index) => (
+        <ToDoItem
+          title={item.title}
+          key={index}
+          id={index}
+          note={item.note}
+          completed={item.completed}
+        />
       ))}
       <button type="submit">CLICK ME</button>
     </form>

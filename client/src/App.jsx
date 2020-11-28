@@ -16,7 +16,7 @@ function App() {
       <DocumentLayout>
         <SideBar />
         <Main>
-          <ListTitle name={"Test List"} />
+          <ListTitle name={"Reminders"} />
           <ToDoForm />
         </Main>
       </DocumentLayout>

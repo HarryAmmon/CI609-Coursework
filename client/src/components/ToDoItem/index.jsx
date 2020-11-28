@@ -4,15 +4,17 @@ import Checkbox from "../Checkbox";
 import Note from "../Note";
 import ItemTitle from "../ItemTitle";
 
-const ToDoItem = ({ id, title, note }) => {
-  const [completed, setCompleted] = useState(false);
+const ToDoItem = ({ id, title, note, completed }) => {
+  const [isCompleted, setIsCompleted] = useState(
+    completed === "true" ? true : false
+  );
   return (
     <div className={Styles.root}>
       <Checkbox
         id={id}
         name={title}
-        value={completed}
-        onChange={() => setCompleted((completed) => !completed)}
+        value={isCompleted}
+        onChange={() => setIsCompleted((isCompleted) => !isCompleted)}
       />
       <div className={Styles.titleWrapper}>
         <ItemTitle title={title} />

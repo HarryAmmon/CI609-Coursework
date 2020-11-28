@@ -1,7 +1,20 @@
 [
     {
         "id": 1,
+        "completed": "false",
         "title": "Lunch",
         "note": "Go to lunch with Olivia"
+    },
+    {
+        "id": 2,
+        "completed": "true",
+        "title": "Collect shopping",
+        "note": "Waitrose at 3pm"
+    },
+    {
+        "id": 3,
+        "completed": "false",
+        "title": "Complete CI609 Coursework",
+        "note": "Don't leave hosting till the last minute"
     }
 ]
