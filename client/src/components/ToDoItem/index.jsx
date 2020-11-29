@@ -8,6 +8,7 @@ const ToDoItem = ({ id, title, note, completed }) => {
   const [isCompleted, setIsCompleted] = useState(
     completed === "true" ? true : false
   );
+
   return (
     <div className={Styles.root}>
       <Checkbox

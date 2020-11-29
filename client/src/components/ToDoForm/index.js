@@ -13,15 +13,10 @@ const ToDoForm = (props) => {
   const [toDos, setToDos] = useState([]);
 
   useEffect(() => {
-    console.log("In use effect");
     api.GetAllToDo().then((response) => {
-      console.log(response);
       setToDos(response);
     });
-
-    // console.log(result);
-    // setToDos(result);
-  }, []);
+  });
 
   return (
     <form onSubmit={handleSubmit}>
@@ -29,7 +24,7 @@ const ToDoForm = (props) => {
         <ToDoItem
           title={item.title}
           key={index}
-          id={index}
+          id={item._id}
           note={item.note}
           completed={item.completed}
         />
