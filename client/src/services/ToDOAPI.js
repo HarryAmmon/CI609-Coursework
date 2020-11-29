@@ -9,12 +9,10 @@ class ToDoAPI {
     return this.api
       .get("api/v1/todos")
       .then((res) => {
-        console.log("SUCCESS");
         return res.data.todos;
       })
       .catch((err) => {
-        console.log(err);
-        return "fail";
+        return err;
       });
   }
 
@@ -23,8 +21,6 @@ class ToDoAPI {
   }
 
   PostToDo(todo) {
-    console.log(todo);
-    console.log(todo);
     return this.api
       .post("api/v1/todos", todo)
       .then((res) => {

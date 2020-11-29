@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 import db from "../database/db.json";
-import ToDoItemValidator from "./services/ToDoItemValidator";
+import ToDoItemValidator from "./services/validators/ToDoItemValidator";
 
 const app = express();
 const jsonParser = bodyParser.json();
