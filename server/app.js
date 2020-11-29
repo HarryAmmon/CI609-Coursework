@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 import ToDoItemValidator from "./services/validators/ToDoItemValidator";
 import ToDoItemRepository from "./services/Repository/ToDoItemRepository";
@@ -16,8 +17,11 @@ app.use(function (req, res, next) {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
+  res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
   next();
 });
+
+app.options("*", cors());
 
 mongoose.connect(
   "mongodb+srv://angryBadger:maker2NINETEEN9offer@todoproject.wjz8y.mongodb.net/ToDoProject?retryWrites=true&w=majority",
@@ -45,6 +49,18 @@ db.once("open", () => {
         res.status(201).send(value);
       });
     }
+  });
+
+  app.patch("/api/v1/todo/:id", jsonParser, (req, res) => {
+    Repository.Update(
+      req.params.id,
+      { completed: req.body.completed },
+      (raw) => {
+        console.log("success");
+        console.log(raw);
+        res.status(200).send();
+      }
+    );
   });
 });
 

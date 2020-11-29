@@ -28,7 +28,7 @@ class ToDoItemRepository {
   }
 
   Update(id, data, callback) {
-    ToDoItem.updateOne({ _id: id }, data, { upsert: true }, (err, raw) => {
+    ToDoItem.updateOne({ _id: id }, data, (err, raw) => {
       if (err) {
         console.log(err);
       }

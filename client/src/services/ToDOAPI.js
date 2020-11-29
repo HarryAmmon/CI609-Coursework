@@ -32,6 +32,20 @@ class ToDoAPI {
         return err;
       });
   }
+
+  UpdateToDo(id, completed) {
+    console.log("got here");
+    return this.api
+      .patch(`api/v1/todo/${id}`, { completed })
+      .then((res) => {
+        console.log("Patch success");
+        return res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+        return err;
+      });
+  }
 }
 
 export default ToDoAPI;
