@@ -23,7 +23,18 @@ class ToDoAPI {
   }
 
   PostToDo(todo) {
-    return {};
+    console.log(todo);
+    console.log(todo);
+    return this.api
+      .post("api/v1/todos", todo)
+      .then((res) => {
+        console.log("POST success");
+        return res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+        return err;
+      });
   }
 }
 
