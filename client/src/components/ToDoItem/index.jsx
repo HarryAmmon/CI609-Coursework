@@ -4,6 +4,7 @@ import Checkbox from "../Checkbox";
 import Note from "../Note";
 import ItemTitle from "../ItemTitle";
 import ToDoApi from "../../services/ToDoAPI";
+import DeleteButton from "../DeleteButton";
 
 const ToDoItem = ({ id, title, note, completed }) => {
   const [isCompleted, setIsCompleted] = useState(completed);
@@ -26,6 +27,7 @@ const ToDoItem = ({ id, title, note, completed }) => {
         <ItemTitle title={title} />
         {note ? <Note note={note} /> : <></>}
       </div>
+      <DeleteButton id={id} />
     </div>
   );
 };

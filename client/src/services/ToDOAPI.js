@@ -6,6 +6,7 @@ class ToDoAPI {
   }
 
   GetAllToDo() {
+    console.log("calling get all");
     return this.api
       .get("api/v1/todos")
       .then((res) => {
@@ -21,6 +22,7 @@ class ToDoAPI {
   }
 
   PostToDo(todo) {
+    console.log("calling POST");
     return this.api
       .post("api/v1/todos", todo)
       .then((res) => {
@@ -34,7 +36,7 @@ class ToDoAPI {
   }
 
   UpdateToDo(id, completed) {
-    console.log("got here");
+    console.log("calling Update");
     return this.api
       .patch(`api/v1/todo/${id}`, { completed })
       .then((res) => {
@@ -45,6 +47,16 @@ class ToDoAPI {
         console.log(err);
         return err;
       });
+  }
+
+  DeleteToDo(id) {
+    console.log("calling delete");
+    return this.api
+      .delete(`api/v1/todo/${id}`)
+      .then((res) => {
+        console.log("success");
+      })
+      .catch((err) => console.log(err));
   }
 }
 

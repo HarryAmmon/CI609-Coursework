@@ -1,0 +1,8 @@
+@import "../variables.scss";
+
+.root {
+  background-color: $colors-danger;
+  border-radius: 5px;
+  border-color: $colors-danger;
+  margin-left: auto;
+}
