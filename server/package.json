@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --exec babel-node app.js",
+    "start": "nodemon app.js --exec babel-node app.js",
     "server": "node app.js",
     "build": "babel -d build ."
   },
@@ -19,6 +19,7 @@
   "devDependencies": {
     "@babel/cli": "^7.12.8",
     "@babel/core": "^7.12.9",
+    "@babel/node": "^7.12.6",
     "@babel/preset-env": "^7.12.7"
   }
 }
