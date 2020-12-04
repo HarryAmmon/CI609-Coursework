@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-import ToDoItem from "../../Models/ToDoItem";
+import ToDoItem from "../Models/ToDoItem";
 
 class ToDoItemRepository {
   ReadAll(callback) {
