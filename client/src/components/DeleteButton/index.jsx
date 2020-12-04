@@ -1,5 +1,5 @@
 import React from "react";
-import ToDoAPI from "../../services/ToDoAPI";
+import ToDoAPI from "../../services/APIToDo";
 import Styles from "./DeleteButton.module.scss";
 
 const DeleteButton = ({ id }) => {

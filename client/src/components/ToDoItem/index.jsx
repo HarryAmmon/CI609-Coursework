@@ -3,7 +3,7 @@ import Styles from "./ToDoItem.module.scss";
 import Checkbox from "../Checkbox";
 import Note from "../Note";
 import ItemTitle from "../ItemTitle";
-import ToDoApi from "../../services/ToDoAPI";
+import ToDoApi from "../../services/APIToDo";
 import DeleteButton from "../DeleteButton";
 
 const ToDoItem = ({ id, title, note, completed }) => {

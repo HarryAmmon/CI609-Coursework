@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import SelectInput from "../../components/SelectInput";
 import TextInput from "../../components/TextInput";
 import { H2 } from "../../components/Typography";
-import ToDoAPI from "../../services/ToDoAPI";
+import ToDoAPI from "../../services/APIToDo";
 
 const AddItem = () => {
   const api = new ToDoAPI("http://localhost:5000/");
