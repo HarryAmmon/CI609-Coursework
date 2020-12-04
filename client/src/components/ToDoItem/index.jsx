@@ -1,21 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Styles from "./ToDoItem.module.scss";
 import Checkbox from "../Checkbox";
 import Note from "../Note";
 import ItemTitle from "../ItemTitle";
-import ToDoApi from "../../services/ToDoAPI";
+import ToDoApi from "../../services/APIToDo";
 import DeleteButton from "../DeleteButton";
 
 const ToDoItem = ({ id, title, note, completed }) => {
   const [isCompleted, setIsCompleted] = useState(completed);
+  const [show, setShow] = useState(true);
 
-  const api = new ToDoApi("http://localhost:5000/");
+  const api = new ToDoApi("http://ci609api.ha383.brighton.domains");
+
   const handleChange = () => {
     setIsCompleted((isCompleted) => !isCompleted);
     api.UpdateToDo(id, !isCompleted);
   };
 
-  return (
+  const handleDelete = () => {
+    setShow(false);
+    api.DeleteToDo(id);
+  };
+
+  return show ? (
     <div className={Styles.root}>
       <Checkbox
         id={id}
@@ -27,8 +34,10 @@ const ToDoItem = ({ id, title, note, completed }) => {
         <ItemTitle title={title} />
         {note ? <Note note={note} /> : <></>}
       </div>
-      <DeleteButton id={id} />
+      <DeleteButton id={id} handleClick={handleDelete} />
     </div>
+  ) : (
+    <></>
   );
 };
 

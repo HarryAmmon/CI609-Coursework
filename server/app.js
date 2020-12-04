@@ -87,9 +87,12 @@ db.once("open", () => {
   app.delete("/api/v1/todo/:id", jsonParser, (req, res) => {
     console.log("Received DELETE request", Date.now());
     Repository.Delete(req.params.id, (error, response) => {
+      console.log(error);
+      console.log(response);
       if (error) {
+        console.log("server errors");
         res.status(500).send("Database error");
-      } else if (response.deletedCount > 1) {
+      } else if (response.deletedCount >= 1) {
         console.log("DELETE successful");
         res.status(200).send();
       } else if (response.deletedCount === 0) {

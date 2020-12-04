@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ToDoItem from "../ToDoItem";
-import ToDoAPI from "../../services/ToDoAPI";
+import ToDoAPI from "../../services/APIToDo";
 
 const ToDoForm = (props) => {
   const handleSubmit = (event) => {
@@ -12,7 +12,7 @@ const ToDoForm = (props) => {
   const [toDos, setToDos] = useState([]);
 
   useEffect(() => {
-    const api = new ToDoAPI("http://localhost:5000/");
+    const api = new ToDoAPI("http://ci609api.ha383.brighton.domains/");
     api.GetAllToDo().then((response) => {
       setToDos(response);
     });
@@ -29,7 +29,6 @@ const ToDoForm = (props) => {
           completed={item.completed}
         />
       ))}
-      <button type="submit">CLICK ME</button>
     </form>
   );
 };
