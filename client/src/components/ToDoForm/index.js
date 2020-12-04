@@ -9,14 +9,14 @@ const ToDoForm = (props) => {
     console.log(event.target[0].checked);
   };
 
-  const api = new ToDoAPI("http://localhost:5000/");
   const [toDos, setToDos] = useState([]);
 
   useEffect(() => {
+    const api = new ToDoAPI("http://localhost:5000/");
     api.GetAllToDo().then((response) => {
       setToDos(response);
     });
-  });
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>

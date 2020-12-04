@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "./ToDoItem.module.scss";
 import Checkbox from "../Checkbox";
 import Note from "../Note";
 import ItemTitle from "../ItemTitle";
+import ToDoApi from "../../services/ToDoAPI";
+import DeleteButton from "../DeleteButton";
 
 const ToDoItem = ({ id, title, note, completed }) => {
-  const [isCompleted, setIsCompleted] = useState(
-    completed === "true" ? true : false
-  );
+  const [isCompleted, setIsCompleted] = useState(completed);
+
+  const api = new ToDoApi("http://localhost:5000/");
+  const handleChange = () => {
+    setIsCompleted((isCompleted) => !isCompleted);
+    api.UpdateToDo(id, !isCompleted);
+  };
 
   return (
     <div className={Styles.root}>
@@ -15,12 +21,13 @@ const ToDoItem = ({ id, title, note, completed }) => {
         id={id}
         name={title}
         value={isCompleted}
-        onChange={() => setIsCompleted((isCompleted) => !isCompleted)}
+        onChange={handleChange}
       />
       <div className={Styles.titleWrapper}>
         <ItemTitle title={title} />
         {note ? <Note note={note} /> : <></>}
       </div>
+      <DeleteButton id={id} />
     </div>
   );
 };
