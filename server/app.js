@@ -37,22 +37,29 @@ db.once("open", () => {
 
   app.get("/api/v1/todos", (req, res) => {
     console.log("Received GET request");
-    Repository.ReadAll((value) => {
-      res.status(200).send({
-        todos: value,
-      });
+    Repository.ReadAll((error, value) => {
+      if (error) {
+        res.status(500).send("Database error");
+      } else {
+        res.status(200).send({
+          todos: value,
+        });
+      }
     });
   });
 
-  // Create a ToDo
   app.post("/api/v1/todos", jsonParser, (req, res) => {
     console.log("Received POST request", Date.now());
     const errors = itemValidator.validate(req.body);
     if (errors) {
       res.status(400).send(`validation errors: ${JSON.stringify(errors)}`);
     } else {
-      Repository.Create(req.body, (value) => {
-        res.status(201).send(value);
+      Repository.Create(req.body, (error, value) => {
+        if (error) {
+          res.status(500).send("Database error");
+        } else {
+          res.status(201).send(value);
+        }
       });
     }
   });
@@ -62,23 +69,36 @@ db.once("open", () => {
     Repository.Update(
       req.params.id,
       { completed: req.body.completed },
-      (raw) => {
-        console.log("success");
-        console.log(raw);
-        res.status(200).send();
+      (error, response) => {
+        if (error) {
+          res.status(500).status("Database error");
+        } else if (response.nModified > 1) {
+          console.log("UPDATE successful");
+          res.status(200).send();
+        } else if (response.nModified === 0) {
+          res.status(404).send(`ID: ${req.params.id} not found`);
+        }
       }
     );
   });
 
   app.delete("/api/v1/todo/:id", jsonParser, (req, res) => {
     console.log("Received DELETE request", Date.now());
-    Repository.Delete(req.params.id, (response) => {
-      console.log(response);
-      res.status(200).send(response);
+    Repository.Delete(req.params.id, (error, response) => {
+      if (error) {
+        res.status(500).send("Database error");
+      } else if (response.deletedCount > 1) {
+        console.log("DELETE successful");
+        res.status(200).send();
+      } else if (response.deletedCount === 0) {
+        res.status(404).send(`ID: ${req.params.id} not found`);
+      } else {
+        res.status(500).send();
+      }
     });
   });
+});
 
-  app.listen(PORT, () => {
-    console.log(`Script running on port ${PORT}`, Date.now());
-  });
+app.listen(PORT, () => {
+  console.log(`Script running on port ${PORT}`, Date.now());
 });
