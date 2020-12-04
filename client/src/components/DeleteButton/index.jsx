@@ -1,14 +1,8 @@
 import React from "react";
-import ToDoAPI from "../../services/APIToDo";
+
 import Styles from "./DeleteButton.module.scss";
 
-const DeleteButton = ({ id }) => {
-  const api = new ToDoAPI("https://localhost:5000");
-
-  const handleClick = () => {
-    api.DeleteToDo(id);
-  };
-
+const DeleteButton = ({ id, handleClick }) => {
   return (
     <button className={Styles.root} type="button" onClick={handleClick}>
       Remove

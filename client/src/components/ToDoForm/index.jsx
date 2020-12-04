@@ -12,7 +12,7 @@ const ToDoForm = (props) => {
   const [toDos, setToDos] = useState([]);
 
   useEffect(() => {
-    const api = new ToDoAPI("http://localhost:5000/");
+    const api = new ToDoAPI("http://ci609api.ha383.brighton.domains/");
     api.GetAllToDo().then((response) => {
       setToDos(response);
     });

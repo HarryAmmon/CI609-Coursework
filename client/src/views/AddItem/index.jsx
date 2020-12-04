@@ -5,7 +5,7 @@ import { H2 } from "../../components/Typography";
 import ToDoAPI from "../../services/APIToDo";
 
 const AddItem = () => {
-  const api = new ToDoAPI("http://localhost:5000/");
+  const api = new ToDoAPI("http://ci609api.ha383.brighton.domains/");
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = {
