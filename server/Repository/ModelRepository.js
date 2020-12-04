@@ -1,15 +1,18 @@
 const mongoose = require("mongoose");
-import ToDoItem from "../Models/ToDoItem";
 
-class ToDoItemRepository {
+class ModelRepository {
+  constructor(model) {
+    this.model = model;
+  }
+
   ReadAll(callback) {
-    const items = ToDoItem.find((error, response) => {
+    const items = this.model.find((error, response) => {
       callback(error, response);
     });
   }
 
   Create(data, callback) {
-    const item = new ToDoItem(data);
+    const item = new this.model(data);
     item.save((error, createdItem) => {
       callback(error, createdItem);
     });
@@ -17,16 +20,16 @@ class ToDoItemRepository {
 
   Delete(id, callback) {
     console.log(`DELETE: ${id}`);
-    ToDoItem.deleteOne({ _id: id }, (error, result) => {
+    this.model.deleteOne({ _id: id }, (error, result) => {
       callback(error, result);
     });
   }
 
   Update(id, data, callback) {
-    ToDoItem.updateOne({ _id: id }, data, (error, result) => {
+    this.model.updateOne({ _id: id }, data, (error, result) => {
       callback(error, result);
     });
   }
 }
 
-export default ToDoItemRepository;
+export default ModelRepository;

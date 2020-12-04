@@ -4,12 +4,14 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 import ToDoItemValidator from "./Validators/ToDoItemValidator";
-import ToDoItemRepository from "./Repository/ToDoItemRepository";
+import ModelRepository from "./Repository/ModelRepository";
+
+import ToDoItem from "./Models/ToDoItem";
 
 const app = express();
 const jsonParser = bodyParser.json();
 const itemValidator = new ToDoItemValidator();
-const Repository = new ToDoItemRepository();
+const Repository = new ModelRepository(ToDoItem);
 
 const PORT = process.env.PORT || 5000;
 
