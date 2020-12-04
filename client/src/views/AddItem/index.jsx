@@ -12,6 +12,7 @@ const AddItem = () => {
       list: event.target[0].value,
       title: event.target[1].value,
       note: event.target[2].value,
+      completed: false,
     };
     api
       .PostToDo(data)

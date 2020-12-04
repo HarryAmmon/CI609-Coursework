@@ -29,7 +29,6 @@ const ToDoForm = (props) => {
           completed={item.completed}
         />
       ))}
-      <button type="submit">CLICK ME</button>
     </form>
   );
 };
