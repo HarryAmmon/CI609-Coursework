@@ -28,11 +28,11 @@ class ToDoItemRepository {
   }
 
   Update(id, data, callback) {
-    ToDoItem.updateOne({ _id: id }, data, (err, raw) => {
+    ToDoItem.updateOne({ _id: id }, data, (err, result) => {
       if (err) {
         console.log(err);
       }
-      callback(raw);
+      callback(result);
     });
   }
 }
