@@ -6,26 +6,27 @@ import ItemTitle from "../ItemTitle";
 import ToDoApi from "../../services/APIToDo";
 import DeleteButton from "../DeleteButton";
 
-const ToDoItem = ({ id, title, note, completed }) => {
+const ToDoItem = ({ id, listID, title, note, completed }) => {
   const [isCompleted, setIsCompleted] = useState(completed);
   const [show, setShow] = useState(true);
 
-  const api = new ToDoApi("http://ci609api.ha383.brighton.domains");
+  const api = new ToDoApi("http://localhost:5000");
 
   const handleChange = () => {
     setIsCompleted((isCompleted) => !isCompleted);
-    api.UpdateToDo(id, !isCompleted);
+    api.UpdateToDo(id, listID, !isCompleted);
   };
 
   const handleDelete = () => {
     setShow(false);
-    api.DeleteToDo(id);
+    api.DeleteToDo(id, listID);
   };
 
   return show ? (
     <div className={Styles.root}>
       <Checkbox
         id={id}
+        listID={listID}
         name={title}
         value={isCompleted}
         onChange={handleChange}

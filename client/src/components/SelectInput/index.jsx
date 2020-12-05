@@ -9,7 +9,7 @@ const SelectInput = ({ placeholder, options, required }) => {
       onChange={(event) => setOption(event.target.value)}
     >
       {options.map((option) => (
-        <option value={option.value} key={option.value}>
+        <option value={option._id} key={option._id}>
           {option.title}
         </option>
       ))}

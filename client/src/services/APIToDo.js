@@ -5,26 +5,23 @@ class ToDoAPI {
     this.api = axios.create({ baseURL });
   }
 
-  GetAllToDo() {
+  GetAllToDo(listID) {
     console.log("calling get all");
+    console.log(listID);
     return this.api
-      .get("api/v1/todos")
-      .then((res) => {
-        return res.data.todos;
+      .get(`api/v1/todos/${listID}`)
+      .then((response) => {
+        return response.data.todos;
       })
-      .catch((err) => {
-        return err;
+      .catch((error) => {
+        console.log(error);
       });
   }
 
-  GetToDo(id) {
-    return {};
-  }
-
-  PostToDo(todo) {
+  PostToDo(listID, todo) {
     console.log("calling POST");
     return this.api
-      .post("api/v1/todos", todo)
+      .post(`api/v1/todos/${listID}`, todo)
       .then((res) => {
         console.log("POST success");
         return res.data;
@@ -35,10 +32,12 @@ class ToDoAPI {
       });
   }
 
-  UpdateToDo(id, completed) {
+  UpdateToDo(listID, itemID, completed) {
     console.log("calling Update");
+    console.log(listID);
+    console.log(itemID);
     return this.api
-      .patch(`api/v1/todo/${id}`, { completed })
+      .patch(`api/v1/todo/${listID}`, { itemID: itemID, complete: completed })
       .then((res) => {
         console.log("Patch success");
         return res.data;
@@ -49,10 +48,10 @@ class ToDoAPI {
       });
   }
 
-  DeleteToDo(id) {
+  DeleteToDo(itemID) {
     console.log("calling delete");
     return this.api
-      .delete(`api/v1/todo/${id}`)
+      .delete(`api/v1/todo/${itemID}`)
       .then((res) => {
         console.log("success");
       })

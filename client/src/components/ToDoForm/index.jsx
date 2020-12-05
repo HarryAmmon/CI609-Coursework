@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ToDoItem from "../ToDoItem";
 import ToDoAPI from "../../services/APIToDo";
 
-const ToDoForm = (props) => {
+const ToDoForm = ({ listID }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(event.target[0].value, event.target[0].name);
@@ -12,8 +12,9 @@ const ToDoForm = (props) => {
   const [toDos, setToDos] = useState([]);
 
   useEffect(() => {
-    const api = new ToDoAPI("http://ci609api.ha383.brighton.domains/");
-    api.GetAllToDo().then((response) => {
+    const api = new ToDoAPI("http://localhost:5000");
+    api.GetAllToDo(listID).then((response) => {
+      console.log(response);
       setToDos(response);
     });
   }, []);
@@ -25,6 +26,7 @@ const ToDoForm = (props) => {
           title={item.title}
           key={index}
           id={item._id}
+          listID={listID}
           note={item.note}
           completed={item.completed}
         />
