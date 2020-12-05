@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "./ToDoItem.module.scss";
 import Checkbox from "../Checkbox";
 import Note from "../Note";
 import ItemTitle from "../ItemTitle";
 import ToDoApi from "../../services/APIToDo";
 import DeleteButton from "../DeleteButton";
+import { useParams } from "react-router-dom";
 
-const ToDoItem = ({ id, listID, title, note, completed }) => {
+const ToDoItem = ({ itemID, listID, title, note, completed }) => {
+  let { id } = useParams();
   const [isCompleted, setIsCompleted] = useState(completed);
   const [show, setShow] = useState(true);
 
@@ -14,19 +16,21 @@ const ToDoItem = ({ id, listID, title, note, completed }) => {
 
   const handleChange = () => {
     setIsCompleted((isCompleted) => !isCompleted);
-    api.UpdateToDo(id, listID, !isCompleted);
+    api.UpdateToDo(itemID, !isCompleted);
   };
 
   const handleDelete = () => {
     setShow(false);
-    api.DeleteToDo(id, listID);
+    api.DeleteToDo(itemID, id);
   };
-
+  useEffect(() => {
+    console.log(id, itemID);
+  }, []);
   return show ? (
     <div className={Styles.root}>
       <Checkbox
-        id={id}
-        listID={listID}
+        id={itemID}
+        listID={id}
         name={title}
         value={isCompleted}
         onChange={handleChange}
@@ -35,7 +39,7 @@ const ToDoItem = ({ id, listID, title, note, completed }) => {
         <ItemTitle title={title} />
         {note ? <Note note={note} /> : <></>}
       </div>
-      <DeleteButton id={id} handleClick={handleDelete} />
+      <DeleteButton id={itemID} handleClick={handleDelete} />
     </div>
   ) : (
     <></>

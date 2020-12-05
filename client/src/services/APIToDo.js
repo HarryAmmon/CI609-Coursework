@@ -6,8 +6,7 @@ class ToDoAPI {
   }
 
   GetAllToDo(listID) {
-    console.log("calling get all");
-    console.log(listID);
+    console.log("calling GET all");
     return this.api
       .get(`api/v1/todos/${listID}`)
       .then((response) => {
@@ -32,19 +31,18 @@ class ToDoAPI {
       });
   }
 
-  UpdateToDo(listID, itemID, completed) {
+  UpdateToDo(itemID, completed) {
     console.log("calling Update");
-    console.log(listID);
-    console.log(itemID);
+    console.log(`ITEMID: ${itemID}`);
     return this.api
-      .patch(`api/v1/todo/${listID}`, { itemID: itemID, complete: completed })
-      .then((res) => {
+      .patch(`api/v1/todo/${itemID}`, { complete: completed })
+      .then((response) => {
+        console.log(response);
         console.log("Patch success");
-        return res.data;
+        return response.data;
       })
       .catch((err) => {
         console.log(err);
-        return err;
       });
   }
 

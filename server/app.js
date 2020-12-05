@@ -95,23 +95,21 @@ db.once("open", () => {
 
   app.patch("/api/v1/todo/:id", jsonParser, (request, response) => {
     console.log("Received UPDATE request", Date.now());
-    if (!isValidID(request.params.id) || !isValidID(request.body.itemID)) {
+    if (!isValidID(request.params.id)) {
       response.status(400).send("Invalid ID");
     } else {
       console.log(request.body);
       ItemRepo.Update(
         request.params.id,
-        request.body.itemID,
-        { completed: request.body.complete },
-        (error, value) => {
-          console.log(value);
+        request.body.complete,
+        (error, result) => {
           if (error) {
             response.status(500).status("Database error");
-          } else if (value.nModified >= 0) {
-            console.log("UPDATE successful");
-            response.status(200).send();
-          } else {
+          } else if (result === undefined) {
             response.status(404).send("Not found");
+          } else {
+            response.status(200).send();
+            console.log("UPDATE successful");
           }
         }
       );
@@ -150,68 +148,18 @@ db.once("open", () => {
     });
   });
 
-  // app.get("/api/v1/list:id", jsonParser, (req, res) => {
-  //   console.log("Received GET request");
-  //   ListRepository.Read(req.params.id, (error, response) => {
-  //     if (errors) {
-  //       console.log("server error");
-  //       res.status(500).send("Database error");
-  //     } else {
-  //       console.log(response);
-  //       res.status(200).send(response);
-  //     }
-  //   });
-  // });
+  app.post("api/v1/list", jsonParser, (request, response) => {
+    console.log("Received POST request");
+    ListRepo.create(request.body, (error, value) => {
+      if (error) {
+        response.status(500).send("Database error");
+      } else {
+        response.status(201).send(value);
+      }
+    });
+  });
 
-  // app.post("/api/v1/lists", jsonParser, (req, res) => {
-  //   console.log("Received POST request", Date.now());
-  //   // const errors = itemValidator.validate(req.body);
-  //   // if (errors) {
-  //   // res.status(400).send(`validation errors: ${JSON.stringify(errors)}`);
-  //   // }
-  //   ListRepository.Create(
-  //     {
-  //       title: "anotherOne",
-  //       items: [
-  //         {
-  //           title: "item1",
-  //           completed: false,
-  //           note: "A test note",
-  //         },
-  //       ],
-  //     },
-  //     (error, value) => {
-  //       if (error) {
-  //         res.status(500).send("Database error");
-  //       } else {
-  //         res.status(201).send(value);
-  //       }
-  //     }
-  //   );
-  // });
+  app.listen(PORT, () => {
+    console.log(`Script running on port ${PORT}`, Date.now());
+  });
 });
-
-app.listen(PORT, () => {
-  console.log(`Script running on port ${PORT}`, Date.now());
-});
-
-// makeExampleList();
-
-//findItemByID("5fca9f49f5ed1c4b513ae385");
-
-// findItemAndUpdateCompleted(
-//   "5fcaa748926d8c4f409e613f",
-//   "5fcb6aa7ad158f68b7f87468",
-//   true
-// );
-
-// findItemAndDelete("5fcaa534935c2f4e76f6bfa1", "5fcaa748926d8c4f409e6142");
-
-//getAllListIDS();
-
-// getAllItemsInList("5fca9db929555f4acda0e50f");
-
-// createItemInList("5fcaa748926d8c4f409e613f", {
-//   title: "Practice Title",
-//   note: "Practice note",
-// });

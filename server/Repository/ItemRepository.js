@@ -47,19 +47,17 @@ class ItemRepository {
     });
   }
 
-  Update(listID, itemID, completed, callback) {
-    this.model.updateOne(
-      { _id: listID, "items._id": itemID },
-      { "items.$.completed": Boolean(completed) },
-      (error, result) => {
-        if (error) console.log(error);
-        if (result === null) {
-          callback(error, undefined);
-        } else {
-          callback(error, result);
-        }
+  Update(itemID, completed, callback) {
+    console.log(itemID, completed);
+    this.model.findOne({ "items._id": itemID }, (error, result) => {
+      if (error) console.log(error);
+      if (result === null) {
+        callback(error, undefined);
+      } else {
+        result.items.id(itemID).completed = completed;
+        result.save((error, (document) => callback(error, document)));
       }
-    );
+    });
   }
 }
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import SelectInput from "../../components/SelectInput";
 import TextInput from "../../components/TextInput";
 import { H2 } from "../../components/Typography";
@@ -7,6 +8,9 @@ import ToDoAPI from "../../services/APIToDo";
 
 const AddItem = () => {
   const api = new ToDoAPI("http://localhost:5000");
+  const [lists, setLists] = useState([]);
+
+  const history = useHistory();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,19 +20,18 @@ const AddItem = () => {
       note: event.target[2].value,
       completed: false,
     };
-    console.log(data);
     api
       .PostToDo(listID, data)
-      .then((res) => console.log("post successful"))
+      .then((res) => {
+        console.log("post successful");
+        history.push(`/${listID}`);
+      })
       .catch((err) => console.log(err));
-    console.log(data);
   };
 
-  const [lists, setLists] = useState([]);
   useEffect(() => {
     const listAPI = new APIList("http://localhost:5000");
     listAPI.GetListsIDAndTitle().then((response) => {
-      console.log(response);
       setLists(response);
     });
   }, []);
@@ -40,6 +43,18 @@ const AddItem = () => {
         <TextInput title={"Title"} required />
         <TextInput title={"Note"} />
         <button type="submit">Add Item</button>
+      </form>
+      <H2>Add List</H2>
+      <form
+        onSubmit={(event) => {
+          console.log("list submit");
+          event.preventDefault();
+          console.log(event.target[0].value);
+        }}
+        id="addListForm"
+      >
+        <TextInput title={"List Title"} required />
+        <button type="submit">Add List</button>
       </form>
     </>
   );

@@ -12,6 +12,11 @@ class ListRepository {
       }
     });
   }
+
+  CreateList(listData) {
+    const list = new this.model({ title: listData.title });
+    list.save();
+  }
 }
 
 export default ListRepository;

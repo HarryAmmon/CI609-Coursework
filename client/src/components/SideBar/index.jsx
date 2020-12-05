@@ -1,11 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Styles from "./SideBar.module.scss";
-const SideBar = () => (
-  <nav className={Styles.root}>
-    <a href="/">List Item 1</a>
-    <a href="/">List Item 2</a>
-    <a href="/">List Item 3</a>
-  </nav>
-);
+const SideBar = ({ lists }) => {
+  return (
+    <>
+      <nav className={Styles.root}>
+        {lists.map((item) => (
+          <Link to={`/${item._id}`}>
+            <button>{item.title}</button>
+          </Link>
+        ))}
+      </nav>
+    </>
+  );
+};
 
 export default SideBar;
