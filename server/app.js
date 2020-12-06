@@ -3,27 +3,17 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-import ToDoItemValidator from "./Validators/ToDoItemValidator";
+import DataValidator from "./Validators/DataValidator";
 import ItemRepository from "./Repository/ItemRepository";
 import ListRepository from "./Repository/ListRepository";
 
-// import ToDoItem from "./Models/ToDoItem";
 import List from "./Models/Lists";
-import makeExampleList, {
-  createItemInList,
-  findItemAndDelete,
-  findItemAndDelete2,
-  findItemAndUpdateCompleted,
-  findItemByID,
-  getAllItemsInList,
-  getAllListIDS,
-} from "./Repository/SubDocumentsPractice";
 import isValidID from "./Validators/IDValidator";
 
 const app = express();
 const jsonParser = bodyParser.json();
 
-const itemValidator = new ToDoItemValidator();
+const validator = new DataValidator();
 
 const ItemRepo = new ItemRepository(List);
 const ListRepo = new ListRepository(List);
@@ -73,7 +63,7 @@ db.once("open", () => {
 
   app.post("/api/v1/todos/:id", jsonParser, (request, response) => {
     console.log("Received POST request", Date.now());
-    const bodyErrors = itemValidator.validate(request.body);
+    const bodyErrors = validator.requiresTitle(request.body);
     if (bodyErrors) {
       response
         .status(400)
@@ -148,15 +138,22 @@ db.once("open", () => {
     });
   });
 
-  app.post("api/v1/list", jsonParser, (request, response) => {
+  app.post("/api/v1/list", jsonParser, (request, response) => {
     console.log("Received POST request");
-    ListRepo.create(request.body, (error, value) => {
-      if (error) {
-        response.status(500).send("Database error");
-      } else {
-        response.status(201).send(value);
-      }
-    });
+    const bodyErrors = validator.requiresTitle(request.body);
+    if (bodyErrors) {
+      response
+        .status(400)
+        .send(`validation errors: ${JSON.stringify(bodyErrors)}`);
+    } else {
+      ListRepo.Create(request.body, (error, value) => {
+        if (error) {
+          response.status(500).send("Database error");
+        } else {
+          response.status(201).send(value);
+        }
+      });
+    }
   });
 
   app.listen(PORT, () => {

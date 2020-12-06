@@ -13,9 +13,9 @@ class ListRepository {
     });
   }
 
-  CreateList(listData) {
+  Create(listData, callback) {
     const list = new this.model({ title: listData.title });
-    list.save();
+    list.save((error, document) => callback(error, document));
   }
 }
 
