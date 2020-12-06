@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Styles from "./SideBar.module.scss";
 import { P } from "../Typography";
 
@@ -9,9 +9,13 @@ const SideBar = ({ lists }) => {
       {lists ? (
         <nav className={Styles.root}>
           {lists.map((item) => (
-            <Link to={`/${item._id}`} key={item._id}>
-              <button>{item.title}</button>
-            </Link>
+            <NavLink
+              to={`/${item._id}`}
+              key={item._id}
+              activeClassName={Styles.match}
+            >
+              {item.title}
+            </NavLink>
           ))}
         </nav>
       ) : (

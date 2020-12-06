@@ -7,7 +7,7 @@ import ToDoApi from "../../services/APIToDo";
 import DeleteButton from "../DeleteButton";
 import { useParams } from "react-router-dom";
 
-const ToDoItem = ({ itemID, listID, title, note, completed }) => {
+const ToDoItem = ({ itemID, title, note, completed }) => {
   let { id } = useParams();
   const [isCompleted, setIsCompleted] = useState(completed);
   const [show, setShow] = useState(true);
