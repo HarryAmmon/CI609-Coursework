@@ -5,10 +5,16 @@
   width: 100vw;
   max-width: 100%;
   display: flex;
-  justify-content: center;
+  align-items: flex-end;
+  height: 7rem;
 }
 
 .content {
   width: 100%;
   max-width: $app-width;
+}
+
+.copy {
+  font-family: $sans-serif;
+  padding-left: 1rem;
 }

@@ -17,6 +17,10 @@
   &:focus + .checkboxControl {
     box-shadow: 0 0 0 0.05em #fff, 0 0 0.15em 0.1em currentColor;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .checkboxControl {

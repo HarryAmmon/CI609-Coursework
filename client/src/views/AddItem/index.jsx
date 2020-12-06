@@ -5,6 +5,7 @@ import TextInput from "../../components/TextInput";
 import { H2 } from "../../components/Typography";
 import APIList from "../../services/APIList";
 import ToDoAPI from "../../services/APIToDo";
+import Styles from "./AddItem.module.scss";
 
 const AddItem = () => {
   const api = new ToDoAPI("http://localhost:5000");
@@ -39,13 +40,16 @@ const AddItem = () => {
     <>
       <H2>Add ToDo</H2>
       <form onSubmit={handleSubmit} id="addItemForm">
-        <SelectInput options={lists} />
-        <TextInput title={"Title"} required />
-        <TextInput title={"Note"} />
-        <button type="submit">Add Item</button>
+        <div className={Styles.root}>
+          <SelectInput options={lists} />
+          <TextInput title={"Title"} required />
+          <TextInput title={"Note"} />
+          <button type="submit" className={Styles.submitButton}>
+            Add Item
+          </button>
+        </div>
       </form>
       <H2>Add List</H2>
-
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -55,8 +59,12 @@ const AddItem = () => {
         }}
         id="addListForm"
       >
-        <TextInput title={"List Title"} required />
-        <button type="submit">Add List</button>
+        <div className={Styles.root}>
+          <TextInput title={"List Title"} required />
+          <button type="submit" className={Styles.submitButton}>
+            Add List
+          </button>
+        </div>
       </form>
     </>
   );

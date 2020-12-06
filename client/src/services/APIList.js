@@ -12,7 +12,7 @@ class APIList {
         console.log(response);
         return response.data.lists;
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.warn(error));
   }
 
   CreateList(title) {
@@ -22,7 +22,17 @@ class APIList {
         console.log(response);
         return response.data;
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.warn(error));
+  }
+
+  RemoveList(listID) {
+    return this.api
+      .delete(`api/v1/list/${listID}`)
+      .then((response) => {
+        console.log(response);
+        return response;
+      })
+      .catch((error) => console.warn(error));
   }
 }
 

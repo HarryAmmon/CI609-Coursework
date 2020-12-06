@@ -39,7 +39,7 @@ const ToDoItem = ({ itemID, title, note, completed }) => {
         <ItemTitle title={title} />
         {note ? <Note note={note} /> : <></>}
       </div>
-      <DeleteButton id={itemID} handleClick={handleDelete} />
+      <DeleteButton handleClick={handleDelete}>Remove</DeleteButton>
     </div>
   ) : (
     <></>

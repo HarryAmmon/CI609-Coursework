@@ -16,7 +16,7 @@ const ListView = () => {
   }, [id]);
   return (
     <>
-      <ListTitle name={listTitle} />
+      <ListTitle listID={id} name={listTitle} />
       <ToDoForm listID={id} />
     </>
   );

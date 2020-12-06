@@ -1,13 +1,17 @@
 import React from "react";
 import Styles from "./PageFooter.module.scss";
-import { H1 } from "../Typography";
 
-const PageFooter = () => (
-  <footer className={Styles.root}>
-    <div className={Styles.content}>
-      <H1>Page Footer</H1>
-    </div>
-  </footer>
-);
+const PageFooter = () => {
+  const date = new Date();
+  return (
+    <footer className={Styles.root}>
+      <div className={Styles.content}>
+        <small className={Styles.copy}>
+          &copy; Harry Ammon {date.getFullYear()}
+        </small>
+      </div>
+    </footer>
+  );
+};
 
 export default PageFooter;

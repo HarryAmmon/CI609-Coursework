@@ -1,4 +1,10 @@
+@import "../variables.scss";
 .root {
-  width: 100%;
-  // min-height: 74vh;
+  width: 75vw;
+  max-width: $app-width;
+  padding: 1rem;
+  @media (max-width: $small-screen-breakpoint) {
+    padding: 0.5rem;
+    width: 94vw;
+  }
 }
