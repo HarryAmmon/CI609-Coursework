@@ -16,13 +16,8 @@ const ListTitle = ({ listID, name, lists, setLists }) => {
         handleClick={() =>
           api.RemoveList(listID).then((response) => {
             const editedList = lists;
-            console.log("EDITED LIST");
-            console.log(editedList);
             const itemToRemove = editedList.findIndex((x) => x._id === listID);
-            console.log(itemToRemove);
             editedList.splice(itemToRemove, 1);
-            console.log("EDTIED LIST SPLICE");
-            console.log(editedList);
             setLists([...editedList]);
             history.push("/");
           })

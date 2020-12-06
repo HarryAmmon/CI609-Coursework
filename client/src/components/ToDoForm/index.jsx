@@ -8,7 +8,6 @@ const ToDoForm = () => {
   const [toDos, setToDos] = useState([]);
 
   useEffect(() => {
-    console.log(`LISTID: ${id}`);
     const api = new ToDoAPI("http://localhost:5000");
     api.GetAllToDo(id).then((response) => {
       setToDos(response);

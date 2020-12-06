@@ -11,7 +11,6 @@ const ListView = ({ lists, setLists }) => {
   useEffect(() => {
     const api = new APIList("http://localhost:5000");
     api.GetListsIDAndTitle().then((response) => {
-      console.log(lists);
       let name = lists.filter((x) => x._id === id);
       setListTitle(name[0] ? name[0].title : "");
     });

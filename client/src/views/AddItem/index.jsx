@@ -9,7 +9,6 @@ import Styles from "./AddItem.module.scss";
 import { P } from "../../components/Typography";
 
 const AddItem = ({ lists, setLists }) => {
-  console.log(`Additem: ${lists}`);
   const api = new ToDoAPI("http://localhost:5000");
   const listAPI = new APIList("http://localhost:5000");
 
