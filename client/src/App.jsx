@@ -44,7 +44,13 @@ function App() {
                     <AddItem lists={lists} setLists={setLists} />
                   )}
                 />
-                <Route exact path={`/:id`} component={() => <ListView />} />
+                <Route
+                  exact
+                  path={`/:id`}
+                  component={() => (
+                    <ListView lists={lists} setLists={setLists} />
+                  )}
+                />
               </Switch>
             </Main>
           </>

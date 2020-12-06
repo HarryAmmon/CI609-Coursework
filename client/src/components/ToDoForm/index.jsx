@@ -11,7 +11,6 @@ const ToDoForm = () => {
     console.log(`LISTID: ${id}`);
     const api = new ToDoAPI("http://localhost:5000");
     api.GetAllToDo(id).then((response) => {
-      console.log(response);
       setToDos(response);
     });
   }, [id]);

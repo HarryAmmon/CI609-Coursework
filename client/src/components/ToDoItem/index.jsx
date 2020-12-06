@@ -23,9 +23,7 @@ const ToDoItem = ({ itemID, title, note, completed }) => {
     setShow(false);
     api.DeleteToDo(itemID, id);
   };
-  useEffect(() => {
-    console.log(id, itemID);
-  }, []);
+
   return show ? (
     <div className={Styles.root}>
       <Checkbox

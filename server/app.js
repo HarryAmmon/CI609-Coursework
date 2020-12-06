@@ -109,7 +109,7 @@ db.once("open", () => {
   app.delete("/api/v1/todo/:id", jsonParser, (request, response) => {
     console.log("Received DELETE request", Date.now());
     if (!isValidID(request.params.id)) {
-      response.status(404).send("Invalid ID");
+      response.status(400).send("Invalid ID");
     } else {
       ItemRepo.Delete(request.params.id, (error, value) => {
         if (error) {
@@ -151,6 +151,24 @@ db.once("open", () => {
           response.status(500).send("Database error");
         } else {
           response.status(201).send(value);
+        }
+      });
+    }
+  });
+
+  app.delete("/api/v1/list/:id", jsonParser, (request, response) => {
+    console.log("Received DELETE request", Date.now());
+    if (!isValidID(request.params.id)) {
+      response.status(400).send("Invalid ID");
+    } else {
+      ListRepo.Delete(request.params.id, (error, value) => {
+        if (error) {
+          response.status(500).send("Database error");
+        } else if (value === undefined) {
+          response.status(404).send("Not Found");
+        } else {
+          console.log("Delete successful");
+          response.status(200).send();
         }
       });
     }

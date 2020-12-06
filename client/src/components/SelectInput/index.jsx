@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const SelectInput = ({ placeholder, options }) => {
   const [option, setOption] = useState();
-  console.log(`Options: ${options}`);
   return (
     <select
       placeholder={placeholder}

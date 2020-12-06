@@ -22,7 +22,6 @@ class ToDoAPI {
     return this.api
       .post(`api/v1/todos/${listID}`, todo)
       .then((res) => {
-        console.log("POST success");
         return res.data;
       })
       .catch((err) => {
@@ -32,13 +31,9 @@ class ToDoAPI {
   }
 
   UpdateToDo(itemID, completed) {
-    console.log("calling Update");
-    console.log(`ITEMID: ${itemID}`);
     return this.api
       .patch(`api/v1/todo/${itemID}`, { complete: completed })
       .then((response) => {
-        console.log(response);
-        console.log("Patch success");
         return response.data;
       })
       .catch((err) => {
@@ -47,7 +42,6 @@ class ToDoAPI {
   }
 
   DeleteToDo(itemID) {
-    console.log("calling delete");
     return this.api
       .delete(`api/v1/todo/${itemID}`)
       .then((res) => {
