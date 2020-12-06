@@ -13,7 +13,7 @@ import APIList from "./services/APIList";
 import { P } from "./components/Typography";
 
 function App() {
-  const [list, setLists] = useState([]);
+  const [lists, setLists] = useState([]);
 
   useEffect(() => {
     const listAPI = new APIList("http://localhost:5000");
@@ -26,26 +26,25 @@ function App() {
     <PageLayout>
       <PageHeader appTitle={"ToDo"} />
       <DocumentLayout>
-        {list[0] === undefined ? (
+        {lists[0] === undefined ? (
           <P>Awaiting data</P>
         ) : (
           <>
-            <SideBar lists={list} />
+            <SideBar lists={lists} />
             <Main>
               <Switch>
                 <Route
                   exact
                   path="/"
+                  component={() => <Redirect to={`/${lists[0]._id}`} />}
+                />
+                <Route
+                  path="/addItem"
                   component={() => (
-                    <Redirect
-                      to={
-                        list[0] !== undefined ? `/${list[0]._id}` : "/addItem"
-                      }
-                    />
+                    <AddItem lists={lists} setLists={setLists} />
                   )}
                 />
-                <Route path="/addItem" component={() => <AddItem />} />
-                <Route exact path={`/:id`} component={ListView} />
+                <Route exact path={`/:id`} component={() => <ListView />} />
               </Switch>
             </Main>
           </>

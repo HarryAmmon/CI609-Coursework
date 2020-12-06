@@ -6,10 +6,12 @@ import { H2 } from "../../components/Typography";
 import APIList from "../../services/APIList";
 import ToDoAPI from "../../services/APIToDo";
 import Styles from "./AddItem.module.scss";
+import { P } from "../../components/Typography";
 
-const AddItem = () => {
+const AddItem = ({ lists, setLists }) => {
+  console.log(`Additem: ${lists}`);
   const api = new ToDoAPI("http://localhost:5000");
-  const [lists, setLists] = useState([]);
+  const listAPI = new APIList("http://localhost:5000");
 
   const history = useHistory();
 
@@ -30,44 +32,44 @@ const AddItem = () => {
       .catch((err) => console.log(err));
   };
 
-  const listAPI = new APIList("http://localhost:5000");
-  useEffect(() => {
-    listAPI.GetListsIDAndTitle().then((response) => {
-      setLists(response);
-    });
-  }, []);
   return (
     <>
-      <H2>Add ToDo</H2>
-      <form onSubmit={handleSubmit} id="addItemForm">
-        <div className={Styles.root}>
-          <SelectInput options={lists} />
-          <TextInput title={"Title"} required />
-          <TextInput title={"Note"} />
-          <button type="submit" className={Styles.submitButton}>
-            Add Item
-          </button>
-        </div>
-      </form>
-      <H2>Add List</H2>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          listAPI.CreateList(event.target[0].value).then((response) => {
-            history.push(response._id);
-          });
-        }}
-        id="addListForm"
-      >
-        <div className={Styles.root}>
-          <TextInput title={"List Title"} required />
-          <button type="submit" className={Styles.submitButton}>
-            Add List
-          </button>
-        </div>
-      </form>
+      {lists === undefined ? (
+        <P>Failed to load</P>
+      ) : (
+        <>
+          <H2>Add ToDo</H2>
+          <form onSubmit={handleSubmit} id="addItemForm">
+            <div className={Styles.root}>
+              <SelectInput options={lists} />
+              <TextInput title={"Title"} required />
+              <TextInput title={"Note"} />
+              <button type="submit" className={Styles.submitButton}>
+                Add Item
+              </button>
+            </div>
+          </form>
+          <H2>Add List</H2>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              listAPI.CreateList(event.target[0].value).then((response) => {
+                setLists([...lists, response]);
+                history.push(response._id);
+              });
+            }}
+            id="addListForm"
+          >
+            <div className={Styles.root}>
+              <TextInput title={"List Title"} required />
+              <button type="submit" className={Styles.submitButton}>
+                Add List
+              </button>
+            </div>
+          </form>
+        </>
+      )}
     </>
   );
 };
-
 export default AddItem;
