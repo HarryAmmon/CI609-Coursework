@@ -10,15 +10,20 @@ import ListView from "./views/ListView";
 import "./App.css";
 import { useEffect, useState } from "react";
 import APIList from "./services/APIList";
+import { useHistory } from "react-router-dom";
 
 function App() {
   const [list, setLists] = useState([]);
+  const history = useHistory();
+
   useEffect(() => {
     const listAPI = new APIList("http://localhost:5000");
     listAPI.GetListsIDAndTitle().then((response) => {
       setLists(response);
+      history.push(`/${response[0]._id}`);
     });
-  }, []);
+  }, [history]);
+
   return (
     <PageLayout>
       <PageHeader appTitle={"ToDo"} />
