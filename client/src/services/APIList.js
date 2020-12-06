@@ -14,6 +14,16 @@ class APIList {
       })
       .catch((error) => console.log(error));
   }
+
+  CreateList(title) {
+    return this.api
+      .post(`api/v1/list`, { title: title })
+      .then((response) => {
+        console.log(response);
+        return response.data;
+      })
+      .catch((error) => console.log(error));
+  }
 }
 
 export default APIList;

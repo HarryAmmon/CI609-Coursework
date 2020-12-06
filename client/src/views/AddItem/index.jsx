@@ -29,8 +29,8 @@ const AddItem = () => {
       .catch((err) => console.log(err));
   };
 
+  const listAPI = new APIList("http://localhost:5000");
   useEffect(() => {
-    const listAPI = new APIList("http://localhost:5000");
     listAPI.GetListsIDAndTitle().then((response) => {
       setLists(response);
     });
@@ -45,11 +45,13 @@ const AddItem = () => {
         <button type="submit">Add Item</button>
       </form>
       <H2>Add List</H2>
+
       <form
         onSubmit={(event) => {
-          console.log("list submit");
           event.preventDefault();
-          console.log(event.target[0].value);
+          listAPI.CreateList(event.target[0].value).then((response) => {
+            history.push(response._id);
+          });
         }}
         id="addListForm"
       >
