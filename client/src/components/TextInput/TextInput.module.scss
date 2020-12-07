@@ -1,0 +1,10 @@
+@import "../variables.scss";
+
+.root,
+select {
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  border: none;
+  background-color: $colors-neutral-3;
+}

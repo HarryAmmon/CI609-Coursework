@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const AddItemButton = () => (
   <Link to="addItem">
-    <button className={Styles.root}>+</button>
+    <button className={Styles.root}>Add Item</button>
   </Link>
 );
 

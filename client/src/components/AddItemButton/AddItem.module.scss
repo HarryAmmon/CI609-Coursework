@@ -1,17 +1,10 @@
 @import "../variables.scss";
 
 .root {
-  padding: 1rem;
-  text-decoration: none;
-  text-align: center;
-  background-color: $colors-white;
-  border-width: 5px;
-  line-height: 1;
-  height: 3rem;
-  outline: none;
-  border: none;
-}
-
-.root:hover {
-  background-color: $colors-neutral-2;
+  background-color: $colors-safe;
+  border-radius: 5px;
+  border-color: $colors-safe;
+  margin-left: 2rem;
+  cursor: pointer;
+  margin-right: 2rem;
 }

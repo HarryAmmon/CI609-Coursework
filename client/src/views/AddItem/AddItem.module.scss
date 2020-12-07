@@ -1,0 +1,16 @@
+@import "../../components/variables.scss";
+
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.submitButton {
+  background: $colors-primary-4;
+  border: $colors-primary-4;
+  font-size: $font-size-4;
+  align-self: flex-start;
+  margin-top: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}

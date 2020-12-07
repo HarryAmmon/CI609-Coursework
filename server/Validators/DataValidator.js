@@ -1,7 +1,5 @@
-class ToDoItemValidator {
-  validate(data) {
-    console.log("data");
-    console.log(data);
+class DataValidator {
+  requiresTitle(data) {
     const errors = {};
     if (data.title === undefined) {
       errors.title = "Must include a title";
@@ -12,4 +10,4 @@ class ToDoItemValidator {
   }
 }
 
-export default ToDoItemValidator;
+export default DataValidator;

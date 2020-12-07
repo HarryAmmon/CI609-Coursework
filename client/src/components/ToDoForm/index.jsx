@@ -1,35 +1,31 @@
 import React, { useEffect, useState } from "react";
 import ToDoItem from "../ToDoItem";
 import ToDoAPI from "../../services/APIToDo";
-
-const ToDoForm = (props) => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(event.target[0].value, event.target[0].name);
-    console.log(event.target[0].checked);
-  };
+import { useParams } from "react-router-dom";
+const ToDoForm = () => {
+  let { id } = useParams();
 
   const [toDos, setToDos] = useState([]);
 
   useEffect(() => {
-    const api = new ToDoAPI("http://ci609api.ha383.brighton.domains/");
-    api.GetAllToDo().then((response) => {
+    const api = new ToDoAPI("http://localhost:5000");
+    api.GetAllToDo(id).then((response) => {
       setToDos(response);
     });
-  }, []);
+  }, [id]);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
       {toDos.map((item, index) => (
         <ToDoItem
           title={item.title}
           key={index}
-          id={item._id}
+          itemID={item._id}
           note={item.note}
           completed={item.completed}
         />
       ))}
-    </form>
+    </>
   );
 };
 

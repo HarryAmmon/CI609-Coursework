@@ -5,4 +5,25 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  font-family: $sans-serif;
+  @media (max-width: $small-screen-breakpoint) {
+    justify-content: center;
+    max-width: 100%;
+  }
+  a {
+    text-decoration: none;
+    color: $colors-black;
+    display: block;
+    padding: 1rem;
+  }
+  a:active {
+    background-color: $colors-primary-1;
+  }
+  a:hover {
+    background-color: $colors-primary-2;
+  }
+}
+
+.match {
+  background-color: $colors-primary-3;
 }

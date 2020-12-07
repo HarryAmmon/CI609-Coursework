@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Styles from "./TextInput.module.scss";
 
 const TextInput = ({ title, required }) => {
   const [value, setValue] = useState("");
@@ -11,6 +12,7 @@ const TextInput = ({ title, required }) => {
       value={value}
       required={required}
       onChange={(event) => setValue(event.target.value)}
+      className={Styles.root}
     />
   );
 };
