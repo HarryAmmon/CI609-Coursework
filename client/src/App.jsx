@@ -13,7 +13,7 @@ import APIList from "./services/APIList";
 import { P } from "./components/Typography";
 
 function App() {
-  const [lists, setLists] = useState([]);
+  const [lists, setLists] = useState();
 
   useEffect(() => {
     const listAPI = new APIList("http://localhost:5000");
@@ -26,7 +26,7 @@ function App() {
     <PageLayout>
       <PageHeader appTitle={"ToDo"} />
       <DocumentLayout>
-        {lists[0] === undefined ? (
+        {lists === undefined ? (
           <P>Awaiting data</P>
         ) : (
           <>
