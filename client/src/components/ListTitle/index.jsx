@@ -7,7 +7,7 @@ import APIList from "../../services/APIList";
 import { useHistory } from "react-router-dom";
 
 const ListTitle = ({ listID, name, lists, setLists }) => {
-  const api = new APIList("http://localhost:5000");
+  const api = new APIList("https://ci609api.ha383.brighton.domains");
   const history = useHistory();
   return (
     <div className={Styles.root}>

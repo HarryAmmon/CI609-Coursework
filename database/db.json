@@ -1,20 +1,136 @@
-[
+[{
+  "_id": {
+    "$oid": "5fca6e7c99fe24ec32352815"
+  },
+  "title": "Reminders1",
+  "__v": 6,
+  "items": [
     {
-        "id": 1,
-        "completed": "false",
-        "title": "Lunch",
-        "note": "Go to lunch with Olivia"
+      "completed": true,
+      "_id": {
+        "$oid": "5fcba9861ebb0e7db9e841ee"
+      },
+      "title": "Ginger",
+      "note": "Bread"
     },
     {
-        "id": 2,
-        "completed": "true",
-        "title": "Collect shopping",
-        "note": "Waitrose at 3pm"
-    },
-    {
-        "id": 3,
-        "completed": "false",
-        "title": "Complete CI609 Coursework",
-        "note": "Don't leave hosting till the last minute"
+      "completed": true,
+      "_id": {
+        "$oid": "5fcbd4e04cbe8e8f5ab3ae08"
+      },
+      "title": "Eat dinner",
+      "note": ""
     }
-]
+  ]
+},{
+  "_id": {
+    "$oid": "5fca7f1628b63d3ae341ff65"
+  },
+  "title": "anotherOne",
+  "items": [
+    {
+      "_id": {
+        "$oid": "5fca7f1628b63d3ae341ff66"
+      },
+      "title": "item1",
+      "completed": true,
+      "note": "A test note"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fca81e7e753333e89ac01fb"
+  },
+  "title": "anotherOne5",
+  "items": [
+    {
+      "_id": {
+        "$oid": "5fca81e7e753333e89ac01fc"
+      },
+      "title": "item5",
+      "completed": true,
+      "note": "A test note"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fcaa748926d8c4f409e613f"
+  },
+  "title": "Shopping List",
+  "items": [
+    {
+      "completed": false,
+      "_id": {
+        "$oid": "5fcbc7b51ebb0e7db9e841f2"
+      },
+      "title": "Bread",
+      "note": "from the bakers"
+    },
+    {
+      "completed": false,
+      "_id": {
+        "$oid": "5fcbd43c4cbe8e8f5ab3ae04"
+      },
+      "title": "milk",
+      "note": ""
+    },
+    {
+      "completed": false,
+      "_id": {
+        "$oid": "5fcbd4594cbe8e8f5ab3ae06"
+      },
+      "title": "Milk",
+      "note": ""
+    },
+    {
+      "completed": false,
+      "_id": {
+        "$oid": "5fce087ec7cb49022b9d88de"
+      },
+      "title": "Beef",
+      "note": ""
+    }
+  ],
+  "__v": 33
+},{
+  "_id": {
+    "$oid": "5fce097bc7cb49022b9d88e4"
+  },
+  "title": "Christmas List",
+  "items": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fce0981c7cb49022b9d88e5"
+  },
+  "title": "Christmas List 1",
+  "items": [
+    {
+      "completed": false,
+      "_id": {
+        "$oid": "5fce09afc7cb49022b9d88ea"
+      },
+      "title": "test",
+      "note": ""
+    },
+    {
+      "completed": false,
+      "_id": {
+        "$oid": "5fce09c8c7cb49022b9d88ee"
+      },
+      "title": "Chcolate",
+      "note": ""
+    },
+    {
+      "completed": false,
+      "_id": {
+        "$oid": "5fce09d1c7cb49022b9d88f0"
+      },
+      "title": "More Chcolate",
+      "note": ""
+    }
+  ],
+  "__v": 7
+}]

@@ -9,8 +9,8 @@ import Styles from "./AddItem.module.scss";
 import { P } from "../../components/Typography";
 
 const AddItem = ({ lists, setLists }) => {
-  const api = new ToDoAPI("http://localhost:5000");
-  const listAPI = new APIList("http://localhost:5000");
+  const api = new ToDoAPI("https://ci609api.ha383.brighton.domains");
+  const listAPI = new APIList("https://ci609api.ha383.brighton.domains");
 
   const history = useHistory();
 

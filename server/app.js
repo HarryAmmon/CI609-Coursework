@@ -33,7 +33,7 @@ app.use(function (req, res, next) {
 app.options("*", cors());
 
 mongoose.connect(
-  "mongodb+srv://angryBadger:maker2NINETEEN9offer@todoproject.wjz8y.mongodb.net/ToDoProject?retryWrites=true&w=majority",
+  `mongodb+srv://angryBadger:maker2NINETEEN9offer@todoproject.wjz8y.mongodb.net/ToDoProject?retryWrites=true&w=majority`,
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
@@ -91,7 +91,7 @@ db.once("open", () => {
       console.log(request.body);
       ItemRepo.Update(
         request.params.id,
-        request.body.complete,
+        request.body.complete || true,
         (error, result) => {
           if (error) {
             response.status(500).status("Database error");

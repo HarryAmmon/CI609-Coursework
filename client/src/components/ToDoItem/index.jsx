@@ -12,7 +12,7 @@ const ToDoItem = ({ itemID, title, note, completed }) => {
   const [isCompleted, setIsCompleted] = useState(completed);
   const [show, setShow] = useState(true);
 
-  const api = new ToDoApi("http://localhost:5000");
+  const api = new ToDoApi("https://ci609api.ha383.brighton.domains");
 
   const handleChange = () => {
     setIsCompleted((isCompleted) => !isCompleted);

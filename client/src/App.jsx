@@ -16,7 +16,7 @@ function App() {
   const [lists, setLists] = useState();
 
   useEffect(() => {
-    const listAPI = new APIList("http://localhost:5000");
+    const listAPI = new APIList("https://ci609api.ha383.brighton.domains");
     listAPI.GetListsIDAndTitle().then((response) => {
       setLists(response);
     });
